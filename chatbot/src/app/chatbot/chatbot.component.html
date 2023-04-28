@@ -1,0 +1,17 @@
+<mat-card>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let message of messages$ | async">
+          <div [ngClass]="{'message-user': message.sender === 'user', 'message-bot': message.sender === 'bot'}">
+            {{ message.text }}
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <mat-form-field appearance="outline">
+        <input matInput [(ngModel)]="message" placeholder="Type your message...">
+        <button mat-button (click)="sendMessage()">Send</button>
+      </mat-form-field>
+    </mat-card-actions>
+</mat-card>  
